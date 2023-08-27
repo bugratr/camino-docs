@@ -1,102 +1,137 @@
 ---
+
+---
 sidebar_position: 2
 ---
 
-# Camino Network Overview
+# Camino Ağı Genel Bakış
 
-Camino features 3 built-in blockchains: [**Exchange Chain (X-Chain)**](#exchange-chain-x-chain), [**Platform Chain (P-Chain)**](#platform-chain-p-chain), and [**Contract Chain (C-Chain**)](#contract-chain-c-chain). All 3 blockchains are validated and secured by the **Primary Network**. The Primary Network is a special subnet, and all members of all custom subnets must also be a member of the Primary Network.
+Camino'nun yerleşik olarak bulunan 3 blokzinciri vardır: [**Exchange Chain (X-Chain)**](#exchange-chain-x-chain), [**Platform Chain (P-Chain)**](#platform-chain-p-chain), ve [**Contract Chain (C-Chain)**](#contract-chain-c-chain). Tüm 3 blokzincir, **Ana Ağ** tarafından doğrulanmış ve güvence altına alınmıştır. Ana Ağ özel bir alt ağdır ve tüm özel alt ağların üyeleri de Ana Ağ'ın bir üyesi olmalıdır.
 
-![Primary network](/img/about/network-overview/primary-network.png)
+![Ana ağ](/img/about/network-overview/primary-network.png)
 
-## Exchange Chain (X-Chain)
+## Takas Zinciri (X-Chain)
 
-The **X-Chain** acts as a decentralized platform for creating and trading digital smart assets, a representation of a real-world resource (e.g., equity, bonds) with a set of rules that govern its behavior, like "can’t be traded until tomorrow" or "can only be sent to US citizens."
+**X-Chain**, dijital akıllı varlıkların oluşturulması ve ticaretinin yapıldığı merkeziyetsiz bir platform olarak hareket eder, bu varlıklar gerçek dünya kaynaklarının (örneğin hisse senetleri, tahviller) bir temsilcisidir ve "yarına kadar ticaret yapılmasın" veya "sadece ABD vatandaşlarına gönderilebilir" gibi kendi davranışlarını yöneten bir dizi kurala sahiptir.
 
-One asset traded on the X-Chain is CAM. When you issue a transaction to a blockchain on Camino, you pay a fee denominated in CAM.
+X-Chain'de alınıp satılan varlıklardan biri CAM'dir. Camino üzerinde bir blockchain'e bir işlem gönderdiğinizde, bu işlem CAM cinsinden bir ücret ödersiniz.
 
-The X-Chain is an instance of the Avalanche Virtual Machine (AVM). The [X-Chain API](../developer/apis/camino-node-apis/x-chain.mdx) allows clients to create and trade assets on the X-Chain and other instances of the AVM.
+X-Chain, Avalanche Sanal Makinesi'nin (AVM) bir örneğidir. [X-Chain API](../developer/apis/camino-node-apis/x-chain.mdx) istemcilere X-Chain ve diğer AVM örneklerinde varlık oluşturma ve ticaret yapma imkanı sağlar.
 
-This is a highly specialized and performance-optimized Chain and since it's kept at a very simple complexity level the overall network load for transactions is lower compared to other Chains. This is also part of the transaction fee computation as simple and fast operations don't put much of a load on the network.
+Bu, oldukça uzmanlaşmış ve performansı optimize edilmiş bir Zincirdir ve basit karmaşıklık seviyesi sayesinde işlemler için genel ağ yükü diğer Zincirlere göre daha düşüktür. Bu, işlem ücreti hesaplamasının da bir parçasıdır çünkü basit ve hızlı işlemler ağı çok fazla yormaz.
 
-## Platform Chain (P-Chain)
+## Platform Zinciri (P-Chain)
 
-The **P-Chain** is the metadata blockchain on Camino and coordinates validators, keeps track of active subnets, and enables the creation of new subnets. The P-Chain implements the **Snowman consensus protocol**.
+**P-Chain**, Camino'nun metadata blockchain'idir ve doğrulayıcıları koordine eder, aktif alt ağları takip eder ve yeni alt ağların oluşturulmasını sağlar. P-Chain, **Snowman konsensüs protokolü**nü uygular.
 
-The [P-Chain API](../developer/apis/camino-node-apis/p-chain.md) allows clients to create subnets, add validators to subnets, and create blockchains.
+[P-Chain API](../developer/apis/camino-node-apis/p-chain.md) istemcilere alt ağlar oluşturma, alt ağlara doğrulayıcı eklemek ve blockchain oluşturmak imkanı sağlar.
 
-Not only coordination but also creation of validators and also delegation of stake is part of the P-Chain. Conceptually, we are in an ongoing process to change the way how stake/delegate is bound to validators, but fundamentally it still be handled on the P-Chain.
+Sadece koordinasyon değil, aynı zamanda doğrulayıcıların oluşturulması ve payın temsil edilmesi de P-Chain'in bir parçasıdır. Kavramsal olarak, stake/delege'nin doğrulayıcılara nasıl bağlandığına dair yolumuzu değiştirmek üzere sürekli bir süreç içindeyiz, ancak temelde bu yine de P-Chain üzerinde ele alınacaktır.
 
-## Contract Chain (C-Chain)
+---
 
-The **C-Chain** allows for the creation smart contracts using the [C-Chain’s API](../developer/apis/camino-node-apis/c-chain.md).
+## Sözleşme Zinciri (C-Chain)
 
-The C-Chain is an instance of the Ethereum Virtual Machine powered by [Camino](../).
+**C-Chain**, [C-Chain'in API](../developer/apis/camino-node-apis/c-chain.md) kullanılarak akıllı sözleşmelerin oluşturulmasına olanak tanır.
 
-This chain is where probably 95% of the total load is transacted. Here the smart contracts, which can be written in Solidity in an Ethereum IDE like [Remix](https://remix.ethereum.org), are deployed and used by the users of the chain (mostly via apps). The addresses used on this chain are also identical in structure to what one is used to from EVM/Ethereum and, in addition, one can also connect to this chain quite easily with existing applications (such as MetaMask).
-From the maximum flexibility and compatibility, the largest negative point arises: It is _potentially_ slow in the execution of (complex) operations. So, to prevent an overload in the network due to complex or inefficient smart contracts, transaction fees will match the complexity of the contracts wanting to be deployed..
+C-Chain, [Camino](../) tarafından desteklenen Ethereum Sanal Makinesi'nin bir örneğidir.
 
-## Why 3 chains?
+Bu zincir, zincirlerdekin toplam yükün yaklaşık %95'ini taşır. Burada, akıllı sözleşmeler, Ethereum IDE'si olan [Remix](https://remix.ethereum.org) gibi bir ortamda Solidity dilinde yazılabilir ve zincirin kullanıcıları (çoğunlukla uygulamalar aracılığıyla) tarafından konuşlandırılır ve zincir kullanılır. Bu zincirde kullanılan adresler, yapısıyla EVM/Ethereum'dan alışık olduğumuz şekilde aynıdır ve ayrıca, mevcut uygulamalar (örneğin MetaMask gibi) ile bu zincire oldukça kolay bir şekilde bağlanabilir. En fazla esneklik ve uyumluluktan, en büyük olumsuz nokta ortaya çıkar: (karmaşık) işlemlerin uygulanmasında _potansiyel olarak_ yavaştır. Bu nedenle, karmaşık veya verimsiz akıllı sözleşmeler nedeniyle ağda bir yüklenme olmaması için, işlem ücretleri konuşlandırılmak istenen sözleşmelerin karmaşıklığına uygun olacaktır.
 
-One should always use the tool that is best suited for a job. This is exactly the philosophy behind the approach of the specialized chains within Avalanche, and since Camino is built on the same technical framework, it also applies to us. These chains are designed, optimized and basically considered as completely separate systems according to their purpose.
-This can seem a bit overwhelming at first, but there are good reasons why these application areas should be split into different chains. And at the end of the day, it's not that complicated anymore, because you only use the Chains you really need.
+## Neden 3 Zincir?
 
-The only interaction between the chains is the exchange of CAM tokens. The role of the entity or person will determine which chain it will need to use:
+Her zaman bir iş için en uygun aracı kullanmalısınız. Bu, Avalanche'ın uzmanlaşmış zincirlerine olan yaklaşımının tam olarak felsefesidir ve Camino aynı teknik çerçeve üzerine inşa edildiğinden, bu bize de uygundur. Bu zincirler, amacına göre tasarlanmış, optimize edilmiş ve temel olarak tamamen bağımsız sistemler olarak kabul edilir.
+Başlangıçta biraz karmaşık görünebilir, ancak günün sonunda, sadece gerçekten ihtiyacınız olan zincirleri kullanırsınız.
 
-- Validators/Delegates must work with the P-Chain.
-- App developers can decide, depending on their requirements, whether integration via the X-chain would be useful to save on fees for many small transactions. As soon as it comes to more complex application scenarios, requiring the use of smart contracts, the C-Chain will be used.
-- App users should not notice this at all, as the apps should handle this in the background.
+Zincirler arasındaki tek etkileşim, CAM jetonlarının takasıdır. Varlığın veya kişinin rolü, hangi zinciri kullanması gerektiğini belirler:
 
-So, in summary:
+- Doğrulayıcılar/Delegeler P-Zinciri ile çalışmak zorundadır.
+- Uygulama geliştiriciler, gereksinimlerine bağlı olarak, birçok küçük işlem için ücretten tasarruf etmek amacıyla X-zinciri aracılığıyla entegrasyonun faydalı olup olmayacağına karar verebilir. Daha karmaşık uygulama senaryoları söz konusu olduğunda, akıllı sözleşmelerin kullanılması gerektiğinde, C-Zinciri kullanılacaktır.
+- Uygulama kullanıcılarının bunu farketmemesi gerekir, çünkü uygulamalar bunu arka planda halletmelidir.
 
-- Anyone can very easily transfer CAM between Chains using the Camino wallet.
-- Network operators/validators and anyone who wants to delegate must (also) use the P-Chain.
-- Advanced app developers have the choice to deal with the limitations but also advantages of the simple and fast X-Chain.
-- All other operations, like deploying smart contracts happen on the C-Chain which is EVM compatible.
+---
 
-## Virtual Machines
+## Özetle:
 
-A **Virtual Machine** (VM) defines the application-level logic of a blockchain. In technical terms, it specifies the blockchain’s state, state transition function, transactions, and the API through which users can interact with the blockchain. Every blockchain on Camino is an instance of a VM.
+- Herkes Camino cüzdanı kullanarak Zincirler arasında CAM aktarabilir.
+- Ağ operatörleri/doğrulayıcılar ve delegasyon yapmak isteyen herkes (ayrıca) P-Zinciri'ni kullanmak zorundadır.
+- Gelişmiş uygulama geliştiricileri, basit ve hızlı X-Zinciri'nin sınırlamaları ama aynı zamanda avantajları ile başa çıkmak için seçeneğe sahiptir.
+- Tüm diğer işlemler, akıllı sözleşmelerin konuşlandırılması EVM uyumlu C-Zinciri üzerinde gerçekleşir.
 
-[When you write a VM](./developer/guides/create-a-virtual-machine-vm.md), you don't need to concern yourself with lower-level logic like networking, consensus, and the structure of the blockchain. Camino does this behind the scenes so, you can focus on the thing you would like to build.
+## Sanal Makineler
 
-Think of a VM as a blueprint for a blockchain; you can use the same VM to create many blockchains, each of which follows the same ruleset but is logically independent of other blockchains.
+Bir **Sanal Makine** (VM), bir blockchain'in uygulama seviyesi mantığını tanımlar. Teknik olarak, blockchain'in durumunu, durum geçiş işlevini, işlemleri ve kullanıcıların blockchain ile etkileşime geçebileceği API'yi belirtir. Camino'daki her blockchain, bir VM'nin bir örneğidir.
 
-### Why Virtual Machines?
+[Bir VM yazarken](./developer/guides/create-a-virtual-machine-vm.md), ağ oluşturma, konsensus ve blockchain'in yapısı gibi daha alt seviye mantıklarla ilgilenmenize gerek yoktur. Camino bu işleri sahnelerin arkasında halleder, böylece yapmak istediğiniz şeye odaklanabilirsiniz.
 
-At first, blockchain networks had one Virtual Machine (VM) with a pre-defined, static set of functionality. This rigid, monolithic design limited what blockchain-based applications one could run on such networks.
+Bir VM'yi, bir blockchain için bir şablon gibi düşünebilirsiniz; aynı VM'yi, aynı kurallar setini takip eden ancak diğer blockchainlerden mantıklı olarak bağımsız olan birçok blockchain oluşturmak için kullanabilirsiniz.
 
-People who wanted custom decentralized applications had to create their own, entirely new blockchain network from scratch. Doing so required a great deal of time and effort, offered limited security, and generally resulted in a bespoke, fragile blockchain that never got off the ground.
+### Neden Sanal Makineler?
 
-Ethereum made a step toward solving this problem with smart contracts. Developers didn’t need to worry about networking and consensus, but creating decentralized applications was still hard. The Ethereum VM has low performance and imposes restrictions on smart contract developers. Solidity and the other few languages for writing Ethereum smart contracts are unfamiliar to most programmers.
+Başlangıçta, blockchain ağları, önceden tanımlanmış, statik bir işlev setine sahip bir Sanal Makine (VM) ile gelirdi. Bu katı, monolitik tasarım, böyle ağlarda çalıştırabileceğiniz blockchain tabanlı uygulamaları sınırlıyordu.
 
-Camino VMs make it easy to define a blockchain-based decentralized application. Rather than new, limited languages like Solidity, developers can write VMs in Go (other languages will be supported in the future).
+Özel merkezi olmayan uygulamalar oluşturmak isteyen insanlar, tamamen yeni bir blockchain ağı oluşturmak zorundaydılar. Bunu yapmak çok zaman ve çaba gerektiriyordu, sınırlı güvenlik sunuyordu ve genellikle yerden kalkamayan özel, kırılgan bir blockchain sonuçlanıyordu.
 
-## Subnets
+Ethereum, akıllı sözleşmeler ile bu soruna bir adım attı. Geliştiricilerin ağ oluşturma ve konsensus konularında endişelenmesine gerek kalmadı, ancak merkezi olmayan uygulamalar oluşturmak hala zordu. Ethereum VM düşük performanslıdır ve akıllı sözleşme geliştiricilerine kısıtlamalar getirir. Ethereum akıllı sözleşmeleri için yazılan Solidity ve diğer birkaç dil, çoğu programcıya yabancıdır.
 
-A **subnet**, or subnetwork, is a dynamic set of validators working together to achieve consensus on the state of a set of blockchains. Each blockchain is validated by exactly one subnet. A subnet can validate many blockchains. A node may be a member of many subnets.
+Camino VM'leri, blockchain tabanlı bir merkezi olmayan uygulamayı tanımlamanın kolay bir yolunu sağlar. Solidity gibi yeni, sınırlı diller yerine, geliştiriciler VM'leri Go dilinde (gelecekte diğer diller de desteklenecek) yazabilirler.
 
-A subnet manages its own membership, and it may require that its constituent validators have certain properties. This is very useful, and we explore its ramifications in more depth below:
+---
 
-### Compliance
 
-Camino’s subnet architecture makes regulatory compliance manageable. As mentioned above, a subnet may require validators to meet a set of requirements.
+## Subnet'ler (Alt Ağlar)
 
-Some examples of requirements include:
+Bir **subnet**, ya da alt ağ, bir dizi doğrulayıcıyı bir araya getiren dinamik bir yapıdır; bu doğrulayıcılar bir dizi blockchain'in durumu üzerinde konsensüs oluşturmak için birlikte çalışırlar. Her blockchain yalnızca bir subnet tarafından doğrulanır. Bir subnet, birçok blockchain'i doğrulayabilir. Bir düğüm, birçok subnet'in üyesi olabilir.
 
-- Validators must be located in a given country
-- Validators must pass a KYC/AML checks
-- Validators must hold a certain license
+Alt ağ kendi üyeliğini yönetir ve bileşen doğrulayıcıların belirli özelliklere sahip olmasını gerektirebilir. Bu, çok yararlıdır ve aşağıda daha derinlemesine ele alıyoruz:
 
-(To be abundantly clear, the above examples are just that: examples. Not all requirements do apply to the Camino Primary Network.)
+### Uyumluluk (Compliance)
 
-### Support for Private Blockchains
+Camino'nun alt ağ mimarisi, düzenleyici uyumluluğu yönetilebilir hale getirir. Yukarıda belirtildiği gibi, bir alt ağ doğrulayıcılarının bir dizi gereksinimi karşılamasını isteyebilir.
 
-You can create a subnet where only certain pre-defined validators may join and create a private subnet where the contents of the blockchains would be visible only to those validators. This is ideal for organizations interested in keeping their information private.
+Gereksinim örnekleri şunlar olabilir:
 
-### Separation of Concerns
+- Doğrulayıcılar belirli bir ülkede bulunmalıdır.
+- Doğrulayıcılar KYC/AML kontrolünden geçmelidir.
+- Doğrulayıcılar belirli bir lisansa sahip olmalıdır.
 
-In a heterogeneous network of blockchains, some validators will not want to validate certain blockchains because they simply have no interest in those blockchains. The subnet model allows validators to only concern themselves with blockchains that they care about. This reduces the burden on validators.
+(Açıkça belirtmek gerekirse, yukarıdaki örnekler sadece örnektir. Tüm gereksinimler Camino'nun Birincil Ağı'na uygulanmaz.)
 
-### Application-Specific Requirements
+### Özel Blockchain'ler için Destek
 
-Different blockchain-based applications may require validators to have certain properties. Suppose there is an application that requires large amounts of RAM or CPU power. A Subnet could require that validators meet certain hardware requirements so that the application doesn’t suffer from low performance due to slow validators.
+Yalnızca belirli önceden tanımlanmış doğrulayıcıların katılabileceği bir alt ağ oluşturabilir ve blockchain'lerin içeriklerinin sadece bu doğrulayıcılar tarafından görülebilir olduğu bir özel alt ağ oluşturabilirsiniz. Bu, bilgilerini özel tutmak isteyen organizasyonlar için idealdir.
+
+### İlgili Alanların Ayrılması (Separation of Concerns)
+
+Bir heterojen blockchain ağından oluşan bir ağda, bazı doğrulayıcılar belirli blockchain'leri doğrulamak istemeyebilir çünkü bu blockchain'lerle ilgilenmiyorlar. Alt ağ modeli, doğrulayıcıların yalnızca ilgilendikleri blockchain'lerle ilgilenmelerini sağlar. Bu, doğrulayıcılar üzerindeki yükü azaltır.
+
+### Uygulama Özgü Gereksinimler
+
+Farklı blockchain tabanlı uygulamaların doğrulayıcılarının belirli özelliklere sahip olmasını gerekebilir. Örneğin, büyük miktarda RAM veya CPU gücü gerektiren bir uygulama varsa, bir alt ağ, uygulamanın yavaş doğrulayıcılar nedeniyle düşük performans göstermemesi için doğrulayıcıların belirli donanım gereksinimlerini karşılamasını isteyebilir.
+
+---
+
+
+## Özel Alt Ağlar ve Yenilikler (Custom Subnets and Innovations)
+
+Camino'nun dinamik alt ağ yapısı, projenin sadece genel uyumluluğu ve özel ihtiyaçları yönetmesine olanak tanımakla kalmaz, aynı zamanda hızlı ve etkili yenilikler için de bir zemin oluşturur.
+
+Örneğin, bir finansal kuruluş kendi alt ağına sahip olabilir ve bu alt ağı, belirli düzenleyici gereksinimleri veya hızlı işlem süreleri gibi özel ihtiyaçlar için optimize edebilir. Bu sayede, finansal kuruluşlar hızlı bir şekilde yeni ürünler ve hizmetler sunabilir.
+
+### Güvenlik ve Ölçeklenebilirlik (Security and Scalability)
+
+Her bir alt ağın kendine ait bir set doğrulayıcıları olduğu için, Camino ağı genelinde güvenlik ve ölçeklenebilirlik sağlanır. Eğer bir alt ağda bir sorun oluşursa, bu durum diğer alt ağları etkilemez. Bu, büyük bir ölçekte çalışırken bile ağı sağlam ve güvende tutar.
+
+### Modülerlik ve Esneklik (Modularity and Flexibility)
+
+Alt ağların modüler yapısı, projelerin sadece mevcut yapıları kullanmalarını değil, aynı zamanda kendi özel alt ağlarını ve blockhain'lerini oluşturmalarını da sağlar. Bu, Camino'nun farklı ihtiyaçlara ve uygulamalara kolaylıkla uyum sağlamasını sağlar.
+
+## Gelecekte Neler Var? (What's Next?)
+
+Camino sürekli olarak gelişmektedir ve bu gelişmelerin bir parçası olarak, daha fazla dilin destekleneceği, daha yüksek performans ve düşük işlem ücretleri sunan yeni Virtual Machine'lerin (VM'ler) ve alt ağların tanıtılması planlanmaktadır.
+
+Ayrıca, Camino'nun gelecekteki sürümleri, kullanıcı deneyimini daha da kolaylaştırmak ve daha geniş bir kullanıcı kitlesine hitap etmek için tasarlanmış olan bir dizi yeni özellik ve araç getirecek.
+
+---
+
+
