@@ -1,56 +1,58 @@
 ---
-sidebar_position: 1
-slug: /
+
+sidebar_position: 1  
+slug: /  
+
 ---
 
-# What is Camino?
+# Camino Nedir?
 
-## Introduction
+## Giriş
 
-[Camino](https://chain4travel.com) is an open-source platform for launching decentralized applications and enterprise blockchain deployments in one interoperable, highly scalable ecosystem. Camino is built for the scale of the global touristic market, with near-instant transaction finality. Ethereum developers can quickly build on Camino as Solidity works out-of-the-box.
+[Camino](https://chain4travel.com), birbiriyle uyumlu, yüksek derecede ölçeklenebilir bir ekosistemde merkezsiz uygulamalar ve kurumsal blockchain dağıtımları başlatmak için açık kaynaklı bir platformdur. Camino, neredeyse anlık olarak işlemlerin sonuçlanması ile küresel turizm pazarı ölçeği için inşa edilmiştir. Ethereum geliştiricileri, Ethereum üzerinde geliştirme yaparken kullandıkları araçların tamamını burada kullanabildikleri için (Örn:Solidity, Remix) hızlı bir şekilde Camino üzerinde inşa edebilirler.
 
 ## CAM
 
-CAM is the native token of Camino. It’s a hard-capped, scarce asset that is used to pay for fees, secure the platform through staking, and provide a basic unit of account between the multiple subnets created on Camino. `1 nCAM` is equal to `0.000000001 CAM`.
+CAM, Camino'nun yerel tokenıdır. Değişmez bir şekilde bir üst arz sınırı olan, nadir bir varlıktır ve ücretleri ödemek, platformu staking ile güvence altına almak ve Camino üzerinde oluşturulan birden fazla alt ağ arasında temel bir hesap birimi sağlamak için kullanılır. `1 nCAM` eşittir `0.000000001 CAM`.
 
-## Camino Consensus Protocol
+## Camino Uyum Protokolü
 
-Protocols in the Camino family operate through repeated sub-sampled voting.
+Camino ailesindeki protokoller, tekrar eden alt örneklemeli oylama yoluyla çalışır.
 
-In the common case when a transaction has no conflicts, finalization happens very quickly. When conflicts exist, honest validators quickly cluster around conflicting transactions, entering a positive feedback loop until all correct validators prefer that transaction. This leads to the acceptance of non-conflicting transactions and the rejection of conflicting transactions.
+Genellikle bir işlemin çakışması yoksa, sonuçlanma çok hızlı bir şekilde gerçekleşir. Çakışmalar durumunda ise, dürüst doğrulayıcılar hızlı bir şekilde çakışan işlemler etrafında küme oluşturur, tüm doğru doğrulayıcılar o işlemi tercih edene kadar pozitif bir geri besleme döngüsüne girerler. Bu, çakışmayan işlemlerin kabulüne ve çakışan işlemlerin reddedilmesine yol açar.
 
-Learn more technical components of the Camino consensus protocol by reading the [Avalanche whitepaper](https://arxiv.org/pdf/1906.08936.pdf).
+Camino uyum protokolünün daha teknik bileşenlerini [Avalanche beyaz kağıdı](https://arxiv.org/pdf/1906.08936.pdf) okuyarak öğrebilirsiniz.
 
-## Key Features
+## Ana Özellikler
 
-### Speed
+### Hız
 
-Uses a consensus protocol, developed by a team of Cornell computer scientists, and is able to permanently confirm transactions in under 1 second.
+Cornell bilgisayar bilimcilerinden oluşan bir ekip tarafından geliştirilen bir uyum protokolü kullanır ve işlemleri 1 saniyenin altında sürekli olarak onaylayabilir.
 
-### Scalability
+### Ölçeklenebilirlik
 
-Capable of 4,500 transactions per second–an order of magnitude greater than existing blockchains.
+Saniyede 4.500 işlem yapabilme kapasitesine sahip—mevcut blockchain'lerden bir büyüklük sırası daha büyüktür.
 
-### Security
+### Güvenlik
 
-Ensures stronger security guarantees well-above the 51% standard of other networks.
+Diğer ağların %51 standartının çok üzerinde daha güçlü güvenlik garantileri sağlar.
 
-### Flexibility
+### Esneklik
 
-Easily create custom blockchains and decentralized apps that contain almost any arbitrary logic.
+Neredeyse her türlü keyfi mantığı içeren özel blockchain'ler ve merkezsiz uygulamalar kolaylıkla oluşturabilirsiniz.
 
-### Sustainability
+### Sürdürülebilirlik
 
-Uses energy-efficient proof-of-stake consensus algorithm rather than proof-of-work.
+İş ispatı yerine hisse ispatı konsensüs algoritması kullanır, enerji verimlidir.
 
-### Smart Contract Support
+### Akıllı Sözleşme Desteği
 
-Supports the creation of Solidity smart contracts and your favorite Ethereum tools like Remix, Metamask, Truffle, and more.
+Solidity akıllı sözleşmelerinin ve Remix, Metamask, Truffle gibi favori Ethereum araçlarının oluşturulmasını destekler.
 
-### Private and Public Blockchains
+### Özel ve Kamu Blockchain'leri
 
-Create your own public or private blockchains.
+Kendi kamusal veya özel blockchain'lerinizi oluşturabilirsiniz.
 
-### Designed for the touristic market
+### Turistik pazar için tasarlanmıştır
 
-Native support for easily creating digital smart assets with complex, custom rulesets.
+Karmaşık, özel kural setleriyle dijital akıllı varlıklar oluşturmayı kolaylaştıran yerel destekleri vardır.
